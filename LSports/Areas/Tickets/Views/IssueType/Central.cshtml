@@ -1,0 +1,138 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <span class="caption-subject bold uppercase">Issue types</span>
+                </div>
+                <div class="tools"><a class="btn blue" style="height: auto;" ng-click="ctrl.addNewIssueType()" data-toggle="modal" href="#edit-issue">Add new</a>
+                </div>
+            </div>
+            <style>
+                .dataTables_filter {
+                    text-align: right;
+                }
+            </style>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover dataTable dtr-inline" id="sample_1" role="grid" aria-describedby="sample_1_info" >
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 258px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">ID</th>
+                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 385px;" aria-label="Position: activate to sort column ascending">Icon</th>
+                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">Name</th>
+                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 111px;" aria-label="Age: activate to sort column ascending"></th>
+                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 199px;" aria-label="Start date: activate to sort column ascending"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        .control-label {
+            text-align: right;
+        }
+    </style>
+    <div class="modal fade" id="edit-issue">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ctrl.closeModal()" aria-hidden="true"></button>
+                    <h4 class="modal-title">{{ctrl.actionName}} Issue Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="add-edit-form" name="addEditForm">
+                    <div class="row" style="margin-bottom: 10px">
+                        <label class="col-md-4 control-label" for="issue-name">Issue type name:</label>
+                        <div class="col-md-8">
+                            <input required type="text"
+                                   class="form-control"
+                                   id="issue-name"
+                                   name="issueName"
+                                   ng-model="ctrl.selectedIssue.Name"
+                                   ng-class="{'aha-invalid' : addEditForm.issueName.$invalid && addEditForm.issueName.$touched}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label" for="issue-type">Icon:</label>
+
+                        <!--Customized select-->
+                        <style>
+                            .aha-select .aha-caret:before {
+                                content: "\f107";
+                                font-family: FontAwesome;
+                            }
+                            .aha-select .aha-caret {
+                                position: absolute;
+                                vertical-align: middle;
+                                right: 25px;
+                                top: 25%;
+                            }
+                            .aha-select .dd-face {
+                                background-color: white !important;
+                                cursor: pointer;
+                                padding-left: 20px;
+                            }
+                            .aha-select li {
+                                list-style-type: none;
+                                cursor: pointer;
+                                padding-left: 3px;
+                            }
+                            .aha-select ul {
+                                padding-left: 0px;
+                            }
+                            .aha-select li:hover {
+                                background-color: #eeeeee;
+
+                            }
+                            #aha-options-list {
+                                background-color: white;
+                                border: 1px solid #eeeeee;
+                                border-top: none;
+                            }
+                            .aha-select .dd-face-icon {
+                                position: absolute;
+                                top: 25%;
+                                left: 20px;
+                            }
+                        </style>
+                        <div class="col-md-8">
+                            <div class="aha-select">
+                                <input type="text"
+                                       class="form-control dd-face"
+                                       id="issue-type"
+                                       name="issueType"
+                                       value="{{ctrl.selectedIssueType.Name}}"
+                                       ng-click="ctrl.ddFaceClicked()"
+                                       required
+                                       readonly="readonly">
+
+                                <i class="{{'fa '+ctrl.selectedIssueType.Icon+' dd-face-icon'}}"></i>
+                                <span class="aha-caret"></span>
+                                <div style="display: none; position: absolute;" id="aha-options-list">
+                                    <ul>
+                                        <li ng-repeat="issueType in ctrl.issueTypes" ng-click="ctrl.ddSelected($index)">
+                                            <i class="{{'fa '+issueType.Icon}}"></i><span style="padding-left: 10px;">{{issueType.Name}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End of customized select-->
+                    </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="ctrl.closeModal()" class="btn dark btn-outline">Close</button>
+                    <button type="button" class="btn blue" ng-click="ctrl.saveChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

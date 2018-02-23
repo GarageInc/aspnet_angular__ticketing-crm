@@ -1,0 +1,1 @@
+﻿var ticketWorkflowApp = angular.module("ticketWorkflowApp", ["dashboard", "dropdown-datasource", "network-services"]);

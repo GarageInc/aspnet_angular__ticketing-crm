@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <span class="caption-subject bold uppercase">Staff</span>
+                </div>
+                <div class="tools">
+                    <a class="btn blue" style="height: auto;" ng-click="ctrl.addNewStaff()" data-toggle="modal" href="#edit-department">Add new</a>
+                </div>
+            </div>
+            <style>
+                .dataTables_filter {
+                    text-align: right;
+                }
+            </style>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover dataTable dtr-inline" id="sample_1" role="grid" aria-describedby="sample_1_info" >
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">Username</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">First Name</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">Last Name</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">Email</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 111px;" aria-label="Age: activate to sort column ascending"></th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" style="width: 199px;" aria-label="Start date: activate to sort column ascending"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        .bug-option:before {
+            content: "";
+        }
+    </style>
+    <div class="modal fade" id="edit-department">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ctrl.closeModal()" aria-hidden="true"></button>
+                    <h4 class="modal-title">User Details</h4>
+                </div>
+                <div class="modal-body" ng-form name="addEditStaffForm">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="department-name">First Name</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="staff-firstname"
+                                       name="firstName"
+                                       required
+                                       ng-class="{'aha-invalid' : addEditStaffForm.firstName.$invalid &&
+                                                                addEditStaffForm.firstName.$touched}"
+                                       ng-model="ctrl.sharedData.selectedStaff.FirstName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="department-name">Last Name</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="staff-lastname"
+                                       name="lastName"
+                                       required
+                                       ng-class="{'aha-invalid' : addEditStaffForm.lastName.$invalid &&
+                                                                addEditStaffForm.lastName.$touched}"
+                                       ng-model="ctrl.sharedData.selectedStaff.LastName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="department-name">Email</label>
+                            <div class="col-md-8">
+                                <input type="email"
+                                       required
+                                       name="email"
+                                       ng-class="{'aha-invalid' : addEditStaffForm.email.$invalid &&
+                                                                addEditStaffForm.email.$touched}"
+                                       ng-pattern="emailFormat"
+                                       class="form-control" id="staff-email" ng-model="ctrl.sharedData.selectedStaff.Email">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class="col-md-4"></div>
+                            <div ng-class="{'col-md-8': ctrl.popupIsEditing, 'col-md-5': !ctrl.popupIsEditing}">
+                                <input type="checkbox" id="department-cansee" ng-model="ctrl.sharedData.selectedStaff.IsAdministrator" ng-change="ctrl.adminStatusChanged()">
+                                <label for="department-cansee">Is administrator</label>
+                            </div>
+                            <div class="col-md-3" ng-if="!ctrl.popupIsEditing">
+                                <button ng-if="!ctrl.popupIsEditing" type="button" class="btn btn-default col-lg-12" ng-click="ctrl.createStaffMember()">Add Staff</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="ctrl.popupIsEditing && !ctrl.sharedData.selectedStaff.IsAdministrator">
+
+                        <div class="portlet">
+                            <hr />
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <h4>Departments</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="row" ng-form name="popupForm">
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                            <select class="form-control"
+                                                    required
+                                                    ng-model="ctrl.sharedData.selectedDepartment"
+                                                    name="selectedDepartment"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.departments track by item.Id"
+                                                    ng-class="{'aha-invalid' : popupForm.selectedDepartment.$touched && popupForm.selectedDepartment.$viewValue.Id === '0'}"></select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control"
+                                                    ng-model="ctrl.sharedData.selectedRole"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.roles track by item.Id"
+                                                    name="selectedRole"
+                                                    required
+                                                    ng-class="{'aha-invalid' : popupForm.selectedRole.$touched && popupForm.selectedRole.$viewValue.Id === '0'}"></select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-default col-lg-12" ng-click="ctrl.addDepartmentRole()">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 portlet-body">
+                                    <table class="table table-striped table-bordered table-hover dataTable dtr-inline" id="user_role_table" role="grid" aria-describedby="user_role_table_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="user_role_table" rowspan="1" colspan="1" style="width: 258px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="user_role_table" rowspan="1" colspan="1" style="width: 188px;" aria-label="Office: activate to sort column ascending">Role</th>
+                                                <th class="sorting" tabindex="0" aria-controls="user_role_table" rowspan="1" colspan="1" style="width: 111px;" aria-label="Age: activate to sort column ascending"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="ctrl.closeModal()" class="btn dark btn-outline">Close</button>
+                    <button type="button" class="btn blue" ng-show="ctrl.popupIsEditing" ng-click="ctrl.saveChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

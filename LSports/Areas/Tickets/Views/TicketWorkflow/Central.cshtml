@@ -1,0 +1,145 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <span class="caption-subject bold uppercase">Ticket Workflow</span>
+                </div>
+                <div class="tools">
+                    <a class="btn blue" style="height: auto;" ng-click="ctrl.addNewFormTemplate()" data-toggle="modal" href="#edit-department">Add new</a>
+                </div>
+            </div>
+            <style>
+                .dataTables_filter {
+                    text-align: right;
+                }
+            </style>
+            <div class="note note-info">
+                <p> You can drag & drop to reorder the rules. The top rules have higher priority. The first matching rule is applied to a ticket. </p>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover dataTable dtr-inline" id="sample_1" role="grid" aria-describedby="sample_1_info" >
+                    <thead>
+                        <tr role="row">
+                            <th>sortingOrder</th>
+                            <th>ID</th>
+                            <th>Customer Priority</th>
+                            <th>Ticket Type</th>
+                            <th>Product</th>
+                            <th>Product Category</th>
+                            <th>Issue Type</th>
+                            <th>Department</th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody style="cursor:move"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        .bug-option:before {
+            content: "";
+        }
+    </style>
+    <div class="modal fade" id="edit-department">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ctrl.closeModal()" aria-hidden="true"></button>
+                    <h4 class="modal-title">Ticket Workflow Rule</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal" ng-form name="ticketWorkflowForm">
+                            
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Customer Priority</label>
+                            <div class="col-md-9">
+                                <select id="table-name" class="form-control"
+                                        ng-model="ctrl.sharedData.selectedCustomerPriority"
+                                        ng-options="item as item.Name for item in ctrl.sharedData.customerPriorities track by item.Id"></select>
+                            </div>
+                        </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Ticket Types</label>
+                                <div class="col-md-9">
+                                    <select id="table-name" class="form-control"
+                                            ng-model="ctrl.sharedData.selectedTicketType"
+                                            ng-options="item as item.Name for item in ctrl.sharedData.ticketTypes track by item.Id"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Product</label>
+                                <div class="col-md-9">
+                                    <select id="table-name" class="form-control"
+                                            ng-model="ctrl.sharedData.selectedProductName"
+                                            ng-options="item as item.Name for item in ctrl.sharedData.productNames track by item.Id"
+                                            ng-change="ctrl.tableNameSelectionChanged()"></select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Product Category</label>
+                                <div class="col-md-9">
+                                    <select id="table-name" class="form-control"
+                                            ng-model="ctrl.sharedData.selectedProductCategory"
+                                            ng-options="item as item.Name for item in ctrl.sharedData.productCategories track by item.Id"
+                                            ng-change="ctrl.tableNameSelectionChanged()"></select>
+                                </div>
+                            </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Issue Type</label>
+                            <div class="col-md-9">
+                                <select id="table-name" class="form-control"
+                                        ng-model="ctrl.sharedData.selectedIssueType"
+                                        ng-options="item as item.Name for item in ctrl.sharedData.issueTypes track by item.Id"
+                                        ng-change="ctrl.tableNameSelectionChanged()"></select>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Department</label>
+                            <div class="col-md-9">
+                                <select id="table-name" class="form-control"
+                                        ng-model="ctrl.sharedData.selectedDepartment"
+                                        ng-options="item as item.Name for item in ctrl.sharedData.departments track by item.Id"
+                                        ng-change="ctrl.tableNameSelectionChanged()"
+                                        name="selectedDepartment"
+                                        required
+                                        ng-class="{'aha-invalid' : ticketWorkflowForm.selectedDepartment.$touched && ticketWorkflowForm.selectedDepartment.$viewValue.Id === '0'}"></select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                            
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="ctrl.closeModal()" class="btn dark btn-outline">Close</button>
+                    <button type="button" class="btn blue" ng-click="ctrl.saveChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

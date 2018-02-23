@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Staff Management";
+    ViewBag.App = "staffManagementApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/StaffManagement/app.js"></script>
+
+    
+    <script src="~/Scripts/StaffManagement/staffManagementController.js"></script>
+    <script src="~/Scripts/StaffManagement/staffManagementDirective.js"></script>
+    <script src="~/Scripts/StaffManagement/staffManagementService.js"></script>
+}
+
+@section Body
+{
+    <div staff-management-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+

@@ -1,0 +1,1 @@
+﻿var issueTypesApp = angular.module("issueTypesApp", ["dashboard","dropdown-datasource", "network-services"]);

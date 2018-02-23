@@ -1,0 +1,129 @@
+﻿@using LSports.Framework.Models
+@{
+    Layout = null;
+}
+
+<div class="page-sidebar-wrapper">
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        @*<div style="position: fixed; max-height: 95%; min-height: 95%;  overflow-y: scroll;">*@
+        <div>
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu " data-auto-scroll="true" data-slide-speed="200">
+            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+            <!--<li class="sidebar-toggler-wrapper">
+                <div class="sidebar-toggler">
+                </div>
+            </li>-->
+            <li style="height: 32px"></li>
+            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+            @if (HttpContext.Current.User.IsInRole(TicRoles.Admin))
+            {
+                <li class="heading">
+                    <h3 class="uppercase">admin</h3>
+                </li>
+                <li class="">
+                    <a href="#par" id="parent" data-toggle="collapse" class="nav-link nav-toggle">
+                        <i class="fa fa-cogs"></i>
+                        <span class="title">Customize Tickets</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="aha-sub-menu collapse" id="par">
+                        <li>
+                            <a href="@Url.Action("Index", "IssueType")">
+                                Issue Types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "TicketType")">
+                                Ticket Types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "CustomField")">
+                                Custom Fields
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "FormTemplate")">
+                                Form Templates
+                            </a>
+                        </li>
+                        <li @*class="active"*@>
+                            <a href="@Url.Action("Index", "EmailTemplate")">
+                                Email Templates
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "TicketWorkflow")">
+                                Ticket Workflow
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#par1" data-toggle="collapse" id="parent1" class="nav-link nav-toggle">
+                        <i class="icon-users"></i>
+                        <span class="title">Staff & Departments</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="aha-sub-menu collapse" id="par1">
+                        <li>
+                            <a href="@Url.Action("Index", "Department")">
+                                Departments
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "StaffManagement")">
+                                Staff
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="heading">
+                    <h3 class="uppercase">Tickets</h3>
+                </li>
+            }
+
+
+
+            @if (HttpContext.Current.User.IsInRole(TicRoles.Staff) || HttpContext.Current.User.IsInRole(TicRoles.Admin))
+            {
+
+                <li class="" ng-repeat="menuItem in ctrl.sideMenu track by $index">
+                    <a href={{"#_par1"+$index}} data-toggle="collapse" class="nav-link nav-toggle" id={{"_parent1"+$index}}>
+                        <i class="fa fa-envelope"></i>
+                        <span class="title">{{menuItem.Title+" "}} ({{menuItem.Count}})</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="aha-sub-menu collapse" id={{"_par1"+$index}}>
+                        <li ng-repeat="menuSubitem in menuItem.Subitems track by $index">
+                            <a href="{{menuSubitem.Url}}">
+                                {{menuSubitem.Title+" "}} ({{menuSubitem.Count}})
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+
+            @if (HttpContext.Current.User.IsInRole(TicRoles.CustomerContact))
+            {
+                <li class="">
+                    <ul class="sub-menu open" style="display: block !important;">
+
+                        <li>
+                            <a href="@Url.Action("Index", "Ticket")">
+                                Tickets
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+
+
+        </ul>
+            <!-- END SIDEBAR MENU -->
+            </div>
+    </div>
+</div>

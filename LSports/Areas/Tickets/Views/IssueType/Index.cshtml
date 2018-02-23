@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Issue Types";
+    ViewBag.App = "issueTypesApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/IssueTypes/app.js"></script>
+
+    <script src="~/Scripts/IssueTypes/issueTypeController.js"></script>
+    <script src="~/Scripts/IssueTypes/issueTypeDirective.js"></script>
+}
+
+@section Body
+{
+    <div issue-type-directive>
+        @Html.Partial("Central")
+
+    </div>
+}

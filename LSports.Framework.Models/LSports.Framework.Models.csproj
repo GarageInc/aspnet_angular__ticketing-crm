@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LSports.Framework.Models</RootNamespace>
+    <AssemblyName>LSports.Framework.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomClasses\CustomerContactModel.cs" />
+    <Compile Include="CustomClasses\CustomerModel.cs" />
+    <Compile Include="CustomClasses\CustomField.cs" />
+    <Compile Include="CustomClasses\CustomFieldDropdown.cs" />
+    <Compile Include="CustomClasses\CustomFieldIdentifier.cs" />
+    <Compile Include="CustomClasses\CustomFieldValue.cs" />
+    <Compile Include="CustomClasses\CustomFieldValueInternal.cs" />
+    <Compile Include="CustomClasses\DropdownItem.cs" />
+    <Compile Include="CustomClasses\EmailTemplateSendToBrief.cs" />
+    <Compile Include="CustomClasses\Error.cs" />
+    <Compile Include="CustomClasses\File.cs" />
+    <Compile Include="CustomClasses\MenuItem.cs" />
+    <Compile Include="CustomClasses\Parameter.cs" />
+    <Compile Include="CustomClasses\Product.cs" />
+    <Compile Include="CustomClasses\ProductCategory.cs" />
+    <Compile Include="CustomClasses\RootMenuItem.cs" />
+    <Compile Include="CustomClasses\SortOrderItem.cs" />
+    <Compile Include="CustomClasses\Staff.cs" />
+    <Compile Include="CustomClasses\CustomFieldTypes.cs" />
+    <Compile Include="CustomClasses\EmailAction.cs" />
+    <Compile Include="CustomClasses\EmailSendTo.cs" />
+    <Compile Include="CustomClasses\MailTemplate.cs" />
+    <Compile Include="CustomClasses\EmailTemplateSendTo.cs" />
+    <Compile Include="CustomClasses\FormTemplateCustomField.cs" />
+    <Compile Include="CustomClasses\FormTemplate.cs" />
+    <Compile Include="CustomClasses\TableFieldMetaData.cs" />
+    <Compile Include="CustomClasses\TicketAttachment.cs" />
+    <Compile Include="CustomClasses\TicketDefault.cs" />
+    <Compile Include="CustomClasses\TicketFieldModel.cs" />
+    <Compile Include="CustomClasses\TicketModel.cs" />
+    <Compile Include="CustomClasses\TicketLog.cs" />
+    <Compile Include="CustomClasses\TicketStatus.cs" />
+    <Compile Include="CustomClasses\TicketWithLastLogRecord.cs" />
+    <Compile Include="CustomClasses\TicketWorkflow.cs" />
+    <Compile Include="CustomClasses\User.cs" />
+    <Compile Include="CustomClasses\UserDepartmentCollectionForDepartment.cs" />
+    <Compile Include="CustomClasses\CustomFieldCollection.cs" />
+    <Compile Include="CustomClasses\UserDepartmentCollectionForStaff.cs" />
+    <Compile Include="CustomClasses\UserListItem.cs" />
+    <Compile Include="CustomClasses\ViewDataUploadFilesResult.cs" />
+    <Compile Include="Enums\ControlEnum.cs" />
+    <Compile Include="Enums\CustomFieldTypeId.cs" />
+    <Compile Include="Enums\DepartmentRoleId.cs" />
+    <Compile Include="Enums\EmailActionId.cs" />
+    <Compile Include="Enums\EmailSendToId.cs" />
+    <Compile Include="Enums\LogEntryTypeId.cs" />
+    <Compile Include="Enums\TicketStatusId.cs" />
+    <Compile Include="TicRoles.cs" />
+    <Compile Include="CustomClasses\Department.cs" />
+    <Compile Include="CustomClasses\DepartmentRole.cs" />
+    <Compile Include="CustomClasses\Icon.cs" />
+    <Compile Include="CustomClasses\IssueType.cs" />
+    <Compile Include="CustomClasses\TicketType.cs" />
+    <Compile Include="CustomClasses\CustomUser.cs" />
+    <Compile Include="CustomClasses\UserDepartment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Ticket Workflow";
+    ViewBag.App = "ticketWorkflowApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/TicketWorkflow/app.js"></script>
+
+    <script src="~/Scripts/TicketWorkflow/ticketWorkflowService.js"></script>
+    <script src="~/Scripts/TicketWorkflow/ticketWorkflowController.js"></script>
+    <script src="~/Scripts/TicketWorkflow/ticketWorkflowDirective.js"></script>
+}
+
+@section Body
+{
+    <div ticket-workflow-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+
+
+

@@ -1,0 +1,1 @@
+﻿var customFieldsApp = angular.module("customFieldsApp", ["dashboard", "dropdown-datasource", "network-services"]);

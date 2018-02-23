@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Custom Fields";
+    ViewBag.App = "customFieldsApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/CustomFields/app.js"></script>
+
+    <script src="~/Scripts/CustomFields/customFieldsService.js"></script>
+    <script src="~/Scripts/CustomFields/customFieldsController.js"></script>
+    <script src="~/Scripts/CustomFields/customFieldsDirective.js"></script>
+}
+
+@section Body
+{
+    <div custom-fields-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+

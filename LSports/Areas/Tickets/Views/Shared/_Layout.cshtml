@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html ng-app="@ViewBag.App">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../Content/metronic/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css"/>
+    
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="../../../../Content/metronic/assets/global/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link id="style_color" href="../../../../Content/metronic/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/metronic/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.datatables.net/rowreorder/1.1.2/css/rowReorder.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/app.css" rel="stylesheet" type="text/css"/>
+
+   
+
+    <!--<link href="../../../../Content/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />-->
+    <link href="../../../../Content/components-md-rtl.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../../../../Scripts/_Shared/angular-sortable-view.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../../../Scripts/_Shared/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/_Shared/components-boostrap-multiselect.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/_Shared/config.js"></script>
+    <!---->
+    <script type="text/javascript" src="../../../../Scripts/_Shared/bootstrap-modalmanager.js"></script>
+    <link rel="stylesheet" href="../../../../Content/bootstrap-multiselect.css" type="text/css" />
+
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="../../../../Content/metronic/assets/global/plugins/select2/select2.min.js"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+    <script type="text/javascript" src="../../../../Content/metronic/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.1.2/js/dataTables.rowReorder.min.js"></script>
+    <script src="/Scripts/_Shared/DashboardComponents/dashboard.js"></script>
+   
+    
+    @RenderSection("Scripts", false)
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content" style="overflow-x: hidden; max-height:1000px">
+
+<!-- BEGIN HEADER -->
+   @Html.Partial("DashboardHeader")
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+<!-- BEGIN SIDEBAR -->
+    @Html.Partial("DashboardSidebar")
+<!-- END SIDEBAR -->
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+<div class="page-content" style="min-height: 914px">
+<!-- BEGIN PAGE CONTENT-->
+
+    @RenderSection("Body", false)
+
+<!-- END PAGE CONTENT-->
+</div>
+</div>
+<!-- END CONTENT -->
+<!-- BEGIN QUICK SIDEBAR -->
+    @*<dashboard-right-sidebar-directive></dashboard-right-sidebar-directive>*@
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner">
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+    <script src="../../../../Content/metronic/assets/global/plugins/respond.min.js"></script>
+    <script src="../../../../Content/metronic/assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="../../../../Content/metronic/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<!--<script src="../../../../Content/metronic/assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../../../../Content/metronic/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="../../../../Content/metronic/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>-->
+<script src="../../../../Content/metronic/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+
+<script src="../../../../Content/metronic/assets/admin/pages/scripts/table-managed.js"></script>
+<script src="../../../../Content/metronic/assets/admin/pages/scripts/ui-toastr.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var openedSections = [];
+
+        if (window.name[0] === "|") {
+
+            openedSections = JSON.parse(window.name.split("|")[1]);
+        }
+
+        console.log(window.name);
+
+        openedSections.forEach(function (val) {
+
+            $("#" + val.listId).addClass("in"); // open the list
+            $("#" + val.arrowParentId).children('a > span.arrow').toggleClass('open');
+        });
+
+        $('.page-sidebar-menu').on('click', '.nav-link', function (e) {
+            var arrowParentId = $(this).attr("id");
+            var listId = $(this).parent().children('ul .aha-sub-menu').attr("id");
+            //console.log($(this).parent());
+            if ($(this).children('a > span.arrow').hasClass('open')) {
+                console.log("open");
+                for (var i = 0, os; os = openedSections[i]; i++) {
+                    console.log("open1");
+                    if (os.arrowParentId === arrowParentId) {
+                        console.log("open2");
+                        openedSections.splice(i, 1);
+                        window.name = "|" + JSON.stringify(openedSections);
+                        break;
+                    }
+                }
+
+            } else {
+                openedSections.push({ arrowParentId: arrowParentId, listId: listId });
+                window.name = "|" + JSON.stringify(openedSections);
+
+            }
+
+            console.log(openedSections);
+
+            $(this).children('a > span.arrow').toggleClass('open');
+
+
+            
+            //console.log($(this).parent().parent().parent().css('height'));
+
+        });
+        $('.page-content').css('height', $(".page-sidebar").css('height'));
+    });
+</script>
+
+<!-- END BODY -->
+
+</body>
+
+</html>

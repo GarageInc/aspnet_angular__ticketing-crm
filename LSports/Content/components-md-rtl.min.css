@@ -1,0 +1,9 @@
+﻿.mt-multiselect .caret {
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 5px;
+}
+.mt-multiselect {
+    text-align: left;
+}

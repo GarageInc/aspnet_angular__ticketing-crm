@@ -1,0 +1,1 @@
+﻿var departmentApp = angular.module("departmentApp", ["dashboard", "dropdown-datasource", "network-services"]);

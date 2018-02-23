@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Email Templates";
+    ViewBag.App = "emailTemplatesApp";
+}
+
+@section Scripts
+{
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+    <script src="~/Scripts/_Shared/trix/trix.js"></script>
+    <script src="~/Scripts/_Shared/trix/angular-trix.js"></script>
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/EmailTemplates/app.js"></script>
+
+    <script src="~/Scripts/EmailTemplates/emailTemplatesService.js"></script>
+    <script src="~/Scripts/EmailTemplates/emailTemplatesController.js"></script>
+    <script src="~/Scripts/EmailTemplates/emailTemplatesDirective.js"></script>
+}
+
+@section Body
+{
+    <div email-templates-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+
+
+

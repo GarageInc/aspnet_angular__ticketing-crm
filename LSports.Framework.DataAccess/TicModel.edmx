@@ -1,0 +1,2326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gb_ts_stagingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EMail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Skype" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phones" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="PostalIndex" Type="varchar" MaxLength="6" />
+          <Property Name="PostalAddress" Type="varchar" MaxLength="500" />
+          <Property Name="WebSite" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phones" Type="varchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" Precision="0" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="EMail" Type="varchar" MaxLength="255" />
+          <Property Name="ClassificationId" Type="int" Nullable="false" />
+          <Property Name="SubscriptionStartDate" Type="datetime" Precision="0" />
+          <Property Name="SubscriptionEndDate" Type="datetime" Precision="0" />
+          <Property Name="IsDeposit" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="text" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="PaymentPeriod" Type="int" Nullable="false" />
+          <Property Name="BookieId" Type="int" />
+          <Property Name="PaidTillDate" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_CustomFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Identifier" Type="varchar" MaxLength="200" />
+          <Property Name="PlaceholderText" Type="varchar" MaxLength="200" />
+          <Property Name="CustomeFieldTypeId" Type="int" Nullable="false" />
+          <Property Name="DbTableName" Type="varchar" MaxLength="200" />
+          <Property Name="DbTableIdFieldName" Type="varchar" MaxLength="200" />
+          <Property Name="DbTableTextFieldName" Type="varchar" MaxLength="200" />
+          <Property Name="DbFilterFieldName" Type="varchar" MaxLength="200" />
+          <Property Name="StepNumber" Type="int" />
+          <Property Name="RootCustomFieldId" Type="int" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="DropdownCustomFieldId" Type="int" />
+        </EntityType>
+        <EntityType Name="tic_CustomFieldTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tic_DepartmentRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tic_Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CanSeeCustomerDetails" Type="bool" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_EmailActions">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_EmailSendTo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SendTo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tic_EmailTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailTemplate" Type="text" />
+          <Property Name="EmailActionKey" Type="varchar" MaxLength="5" />
+          <Property Name="EmailSubject" Type="varchar" MaxLength="450" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="EmailTemplatePreview" Type="longtext" />
+        </EntityType>
+        <EntityType Name="tic_EmailTemplateSendTo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailSendToId" Type="int" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_FormTemplateCustomFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomFieldId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="FormTemplateId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_FormTemplates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TicketTypeId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductCategoryId" Type="int" />
+          <Property Name="IssueTypeId" Type="int" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_Icons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_IssueTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_ProductCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_TicketDefault">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IssueTypeId" Type="int" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="PackageId" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tic_TicketStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="45" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tic_TicketTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IconId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_TicketWorkflow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerPriorityId" Type="int" />
+          <Property Name="TicketTypeId" Type="int" />
+          <Property Name="IssueTypeId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductCategoryId" Type="int" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tic_UserDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" />
+          <Property Name="DepartmentRoleId" Type="varchar" MaxLength="5" />
+          <Property Name="IsActive" Type="bool" Nullable="false" />
+          <Property Name="CreationDate" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastUpdate" Type="timestamp" Precision="0" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TicketFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketId" Type="int" />
+          <Property Name="Field" Type="varchar" MaxLength="255" />
+          <Property Name="Value" Type="mediumtext" />
+          <Property Name="CustomFieldId" Type="int" />
+          <Property Name="TextValue" Type="mediumtext" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="CustomerUserId" Type="int" Nullable="false" />
+          <Property Name="PriorityId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IssueTypeId" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="PackageId" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="AssignedTo" Type="varchar" MaxLength="128" />
+          <Property Name="PrevAssignee" Type="varchar" MaxLength="255" />
+          <Property Name="NewAssignee" Type="varchar" MaxLength="255" />
+          <Property Name="PrevStatus" Type="varchar" MaxLength="255" />
+          <Property Name="NewStatus" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TicketsLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketId" Type="int" Nullable="false" />
+          <Property Name="ActorId" Type="int" />
+          <Property Name="EntryTypeId" Type="int" Nullable="false" />
+          <Property Name="EntryValue" Type="mediumtext" />
+          <Property Name="CreationDate" Type="datetime" Precision="0" />
+          <Property Name="EntryExtendedValue" Type="mediumtext" />
+          <Property Name="ActorUserId" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="userclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="longtext" />
+          <Property Name="ClaimValue" Type="longtext" />
+        </EntityType>
+        <EntityType Name="userlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userroles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+          <Property Name="PasswordHash" Type="longtext" />
+          <Property Name="SecurityStamp" Type="longtext" />
+          <Property Name="PhoneNumber" Type="longtext" />
+          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userclaims" Type="Self.userclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userlogins" Type="Self.userlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Roles">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userroles" Type="Self.userroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userroles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomeFields_CustomFieldTypes">
+          <End Role="tic_CustomFieldTypes" Type="Self.tic_CustomFieldTypes" Multiplicity="1" />
+          <End Role="tic_CustomFields" Type="Self.tic_CustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_CustomFieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_CustomFields">
+              <PropertyRef Name="CustomeFieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplateSendTo_EmailTemplate">
+          <End Role="tic_EmailTemplate" Type="Self.tic_EmailTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_EmailTemplateSendTo" Type="Self.tic_EmailTemplateSendTo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_EmailTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_EmailTemplateSendTo">
+              <PropertyRef Name="EmailTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplatesSendTo_EmailSendTo">
+          <End Role="tic_EmailSendTo" Type="Self.tic_EmailSendTo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_EmailTemplateSendTo" Type="Self.tic_EmailTemplateSendTo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_EmailSendTo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_EmailTemplateSendTo">
+              <PropertyRef Name="EmailSendToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplateCustomeFields_FormTemplates">
+          <End Role="tic_FormTemplates" Type="Self.tic_FormTemplates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_FormTemplateCustomFields" Type="Self.tic_FormTemplateCustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_FormTemplates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplateCustomFields">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplateCustomFields_CustomFields">
+          <End Role="tic_CustomFields" Type="Self.tic_CustomFields" Multiplicity="1" />
+          <End Role="tic_FormTemplateCustomFields" Type="Self.tic_FormTemplateCustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_CustomFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplateCustomFields">
+              <PropertyRef Name="CustomFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_IssueTypes">
+          <End Role="tic_IssueTypes" Type="Self.tic_IssueTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_FormTemplates" Type="Self.tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_ProductCategories">
+          <End Role="tic_ProductCategories" Type="Self.tic_ProductCategories" Multiplicity="0..1" />
+          <End Role="tic_FormTemplates" Type="Self.tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_ProductCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_Products">
+          <End Role="tic_Products" Type="Self.tic_Products" Multiplicity="0..1" />
+          <End Role="tic_FormTemplates" Type="Self.tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_TicketTypes">
+          <End Role="tic_TicketTypes" Type="Self.tic_TicketTypes" Multiplicity="0..1" />
+          <End Role="tic_FormTemplates" Type="Self.tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="TicketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IssueTypes_Icons">
+          <End Role="tic_Icons" Type="Self.tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_IssueTypes" Type="Self.tic_IssueTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_IssueTypes">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategories_Icons">
+          <End Role="tic_Icons" Type="Self.tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_ProductCategories" Type="Self.tic_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_ProductCategories">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Icons">
+          <End Role="tic_Icons" Type="Self.tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_Products" Type="Self.tic_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_Products">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_IssueTypes">
+          <End Role="tic_IssueTypes" Type="Self.tic_IssueTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_TicketTypes">
+          <End Role="tic_TicketTypes" Type="Self.tic_TicketTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsLogs_Tickets">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TicketsLogs" Type="Self.TicketsLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsLogs">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketTypes_Icons">
+          <End Role="tic_Icons" Type="Self.tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketTypes" Type="Self.tic_TicketTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketTypes">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_Departments">
+          <End Role="tic_Departments" Type="Self.tic_Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketWorkflow" Type="Self.tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_IssueTypes">
+          <End Role="tic_IssueTypes" Type="Self.tic_IssueTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketWorkflow" Type="Self.tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_ProductCategories">
+          <End Role="tic_ProductCategories" Type="Self.tic_ProductCategories" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketWorkflow" Type="Self.tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_ProductCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_Products">
+          <End Role="tic_Products" Type="Self.tic_Products" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketWorkflow" Type="Self.tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_TicketTypes">
+          <End Role="tic_TicketTypes" Type="Self.tic_TicketTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_TicketWorkflow" Type="Self.tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="TicketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDepartments_DepartmentRoles">
+          <End Role="tic_DepartmentRoles" Type="Self.tic_DepartmentRoles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_UserDepartments" Type="Self.tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_DepartmentRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="DepartmentRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDepartments_Departments">
+          <End Role="tic_Departments" Type="Self.tic_Departments" Multiplicity="0..1" />
+          <End Role="tic_UserDepartments" Type="Self.tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDepartments_Users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tic_UserDepartments" Type="Self.tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdentityRole_Users">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userroles" Type="Self.userroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userroles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gb_ts_stagingModelStoreContainer">
+          <EntitySet Name="CustomerContacts" EntityType="Self.CustomerContacts" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_CustomFields" EntityType="Self.tic_CustomFields" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_CustomFieldTypes" EntityType="Self.tic_CustomFieldTypes" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_DepartmentRoles" EntityType="Self.tic_DepartmentRoles" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_Departments" EntityType="Self.tic_Departments" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_EmailActions" EntityType="Self.tic_EmailActions" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_EmailSendTo" EntityType="Self.tic_EmailSendTo" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_EmailTemplate" EntityType="Self.tic_EmailTemplate" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_EmailTemplateSendTo" EntityType="Self.tic_EmailTemplateSendTo" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_Files" EntityType="Self.tic_Files" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_FormTemplateCustomFields" EntityType="Self.tic_FormTemplateCustomFields" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_FormTemplates" EntityType="Self.tic_FormTemplates" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_Icons" EntityType="Self.tic_Icons" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_IssueTypes" EntityType="Self.tic_IssueTypes" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_ProductCategories" EntityType="Self.tic_ProductCategories" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_Products" EntityType="Self.tic_Products" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_TicketDefault" EntityType="Self.tic_TicketDefault" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_TicketStatuses" EntityType="Self.tic_TicketStatuses" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_TicketTypes" EntityType="Self.tic_TicketTypes" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_TicketWorkflow" EntityType="Self.tic_TicketWorkflow" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="tic_UserDepartments" EntityType="Self.tic_UserDepartments" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="TicketFields" EntityType="Self.TicketFields" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="TicketsLogs" EntityType="Self.TicketsLogs" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="userclaims" EntityType="Self.userclaims" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="userlogins" EntityType="Self.userlogins" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="userroles" EntityType="Self.userroles" Schema="gb_ts_staging" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="gb_ts_staging" store:Type="Tables" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="users" EntitySet="users" />
+            <End Role="userclaims" EntitySet="userclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="users" EntitySet="users" />
+            <End Role="userlogins" EntitySet="userlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+            <End Role="users" EntitySet="users" />
+            <End Role="userroles" EntitySet="userroles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomeFields_CustomFieldTypes" Association="Self.FK_CustomeFields_CustomFieldTypes">
+            <End Role="tic_CustomFieldTypes" EntitySet="tic_CustomFieldTypes" />
+            <End Role="tic_CustomFields" EntitySet="tic_CustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplateSendTo_EmailTemplate" Association="Self.FK_EmailTemplateSendTo_EmailTemplate">
+            <End Role="tic_EmailTemplate" EntitySet="tic_EmailTemplate" />
+            <End Role="tic_EmailTemplateSendTo" EntitySet="tic_EmailTemplateSendTo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplatesSendTo_EmailSendTo" Association="Self.FK_EmailTemplatesSendTo_EmailSendTo">
+            <End Role="tic_EmailSendTo" EntitySet="tic_EmailSendTo" />
+            <End Role="tic_EmailTemplateSendTo" EntitySet="tic_EmailTemplateSendTo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplateCustomeFields_FormTemplates" Association="Self.FK_FormTemplateCustomeFields_FormTemplates">
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+            <End Role="tic_FormTemplateCustomFields" EntitySet="tic_FormTemplateCustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplateCustomFields_CustomFields" Association="Self.FK_FormTemplateCustomFields_CustomFields">
+            <End Role="tic_CustomFields" EntitySet="tic_CustomFields" />
+            <End Role="tic_FormTemplateCustomFields" EntitySet="tic_FormTemplateCustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_IssueTypes" Association="Self.FK_FormTemplates_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_ProductCategories" Association="Self.FK_FormTemplates_ProductCategories">
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_Products" Association="Self.FK_FormTemplates_Products">
+            <End Role="tic_Products" EntitySet="tic_Products" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_TicketTypes" Association="Self.FK_FormTemplates_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IssueTypes_Icons" Association="Self.FK_IssueTypes_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategories_Icons" Association="Self.FK_ProductCategories_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Icons" Association="Self.FK_Products_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_Products" EntitySet="tic_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_IssueTypes" Association="Self.FK_Tickets_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_TicketTypes" Association="Self.FK_Tickets_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsLogs_Tickets" Association="Self.FK_TicketsLogs_Tickets">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketsLogs" EntitySet="TicketsLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketTypes_Icons" Association="Self.FK_TicketTypes_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_Departments" Association="Self.FK_TicketWorkflow_Departments">
+            <End Role="tic_Departments" EntitySet="tic_Departments" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_IssueTypes" Association="Self.FK_TicketWorkflow_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_ProductCategories" Association="Self.FK_TicketWorkflow_ProductCategories">
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_Products" Association="Self.FK_TicketWorkflow_Products">
+            <End Role="tic_Products" EntitySet="tic_Products" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_TicketTypes" Association="Self.FK_TicketWorkflow_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDepartments_DepartmentRoles" Association="Self.FK_UserDepartments_DepartmentRoles">
+            <End Role="tic_DepartmentRoles" EntitySet="tic_DepartmentRoles" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDepartments_Departments" Association="Self.FK_UserDepartments_Departments">
+            <End Role="tic_Departments" EntitySet="tic_Departments" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDepartments_Users" Association="Self.FK_UserDepartments_Users">
+            <End Role="users" EntitySet="users" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="userroles" EntitySet="userroles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gb_ts_stagingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.userroles" FromRole="roles" ToRole="users" />
+        </EntityType>
+        <EntityType Name="userclaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Self.ApplicationUser_Claims" FromRole="userclaims" ToRole="users" />
+        </EntityType>
+        <EntityType Name="userlogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.ApplicationUser_Logins" FromRole="userlogins" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="userclaims" Relationship="Self.ApplicationUser_Claims" FromRole="users" ToRole="userclaims" />
+          <NavigationProperty Name="userlogins" Relationship="Self.ApplicationUser_Logins" FromRole="users" ToRole="userlogins" />
+          <NavigationProperty Name="roles" Relationship="Self.userroles" FromRole="users" ToRole="roles" />
+          <NavigationProperty Name="tic_UserDepartments" Relationship="gb_ts_stagingModel.FK_UserDepartments_Users" FromRole="user" ToRole="tic_UserDepartments" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="users" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userclaims" Type="Self.userclaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="users" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userlogins" Type="Self.userlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userroles">
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <End Role="roles" Type="Self.role" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="gb_ts_stagingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="userclaims" EntityType="Self.userclaim" />
+          <EntitySet Name="userlogins" EntityType="Self.userlogin" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="users" EntitySet="users" />
+            <End Role="userclaims" EntitySet="userclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="users" EntitySet="users" />
+            <End Role="userlogins" EntitySet="userlogins" />
+          </AssociationSet>
+          <AssociationSet Name="userroles" Association="Self.userroles">
+            <End Role="users" EntitySet="users" />
+            <End Role="roles" EntitySet="roles" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="gb_ts_stagingModel.Customer" />
+          <EntitySet Name="tic_DepartmentRoles" EntityType="gb_ts_stagingModel.tic_DepartmentRoles" />
+          <EntitySet Name="tic_Departments" EntityType="gb_ts_stagingModel.tic_Departments" />
+          <EntitySet Name="tic_EmailActions" EntityType="gb_ts_stagingModel.tic_EmailActions" />
+          <EntitySet Name="tic_EmailSendTo" EntityType="gb_ts_stagingModel.tic_EmailSendTo" />
+          <EntitySet Name="tic_EmailTemplate" EntityType="gb_ts_stagingModel.tic_EmailTemplate" />
+          <EntitySet Name="tic_EmailTemplateSendTo" EntityType="gb_ts_stagingModel.tic_EmailTemplateSendTo" />
+          <EntitySet Name="tic_Icons" EntityType="gb_ts_stagingModel.tic_Icons" />
+          <EntitySet Name="tic_IssueTypes" EntityType="gb_ts_stagingModel.tic_IssueTypes" />
+          <EntitySet Name="tic_TicketStatuses" EntityType="gb_ts_stagingModel.tic_TicketStatuses" />
+          <EntitySet Name="tic_TicketTypes" EntityType="gb_ts_stagingModel.tic_TicketTypes" />
+          <EntitySet Name="tic_UserDepartments" EntityType="gb_ts_stagingModel.tic_UserDepartments" />
+          <EntitySet Name="TicketFields" EntityType="gb_ts_stagingModel.TicketField" />
+          <EntitySet Name="Tickets" EntityType="gb_ts_stagingModel.Ticket" />
+          <EntitySet Name="TicketsLogs" EntityType="gb_ts_stagingModel.TicketsLog" />
+          <AssociationSet Name="FK_UserDepartments_DepartmentRoles" Association="gb_ts_stagingModel.FK_UserDepartments_DepartmentRoles">
+            <End Role="tic_DepartmentRoles" EntitySet="tic_DepartmentRoles" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Department" Association="gb_ts_stagingModel.FK_Tickets_Department">
+            <End Role="tic_Departments" EntitySet="tic_Departments" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDepartments_Departments" Association="gb_ts_stagingModel.FK_UserDepartments_Departments">
+            <End Role="tic_Departments" EntitySet="tic_Departments" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplatesSendTo_EmailSendTo" Association="gb_ts_stagingModel.FK_EmailTemplatesSendTo_EmailSendTo">
+            <End Role="tic_EmailSendTo" EntitySet="tic_EmailSendTo" />
+            <End Role="tic_EmailTemplateSendTo" EntitySet="tic_EmailTemplateSendTo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplateSendTo_EmailTemplate" Association="gb_ts_stagingModel.FK_EmailTemplateSendTo_EmailTemplate">
+            <End Role="tic_EmailTemplate" EntitySet="tic_EmailTemplate" />
+            <End Role="tic_EmailTemplateSendTo" EntitySet="tic_EmailTemplateSendTo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IssueTypes_Icons" Association="gb_ts_stagingModel.FK_IssueTypes_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketTypes_Icons" Association="gb_ts_stagingModel.FK_TicketTypes_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_IssueTypes" Association="gb_ts_stagingModel.FK_Tickets_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_TicketStatus" Association="gb_ts_stagingModel.FK_Tickets_TicketStatus">
+            <End Role="tic_TicketStatuses" EntitySet="tic_TicketStatuses" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_TicketTypes" Association="gb_ts_stagingModel.FK_Tickets_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDepartments_Users" Association="gb_ts_stagingModel.FK_UserDepartments_Users">
+            <End Role="user" EntitySet="users" />
+            <End Role="tic_UserDepartments" EntitySet="tic_UserDepartments" />
+          </AssociationSet>
+          <EntitySet Name="tic_CustomFields" EntityType="gb_ts_stagingModel.tic_CustomFields" />
+          <EntitySet Name="tic_CustomFieldTypes" EntityType="gb_ts_stagingModel.tic_CustomFieldTypes" />
+          <EntitySet Name="tic_Files" EntityType="gb_ts_stagingModel.tic_Files" />
+          <EntitySet Name="tic_FormTemplateCustomFields" EntityType="gb_ts_stagingModel.tic_FormTemplateCustomFields" />
+          <EntitySet Name="tic_FormTemplates" EntityType="gb_ts_stagingModel.tic_FormTemplates" />
+          <EntitySet Name="tic_ProductCategories" EntityType="gb_ts_stagingModel.tic_ProductCategories" />
+          <EntitySet Name="tic_Products" EntityType="gb_ts_stagingModel.tic_Products" />
+          <AssociationSet Name="FK_FormTemplateCustomFields_CustomFields" Association="gb_ts_stagingModel.FK_FormTemplateCustomFields_CustomFields">
+            <End Role="tic_CustomFields" EntitySet="tic_CustomFields" />
+            <End Role="tic_FormTemplateCustomFields" EntitySet="tic_FormTemplateCustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_IssueTypes" Association="gb_ts_stagingModel.FK_FormTemplates_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_ProductCategories" Association="gb_ts_stagingModel.FK_FormTemplates_ProductCategories">
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_Products" Association="gb_ts_stagingModel.FK_FormTemplates_Products">
+            <End Role="tic_Products" EntitySet="tic_Products" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplates_TicketTypes" Association="gb_ts_stagingModel.FK_FormTemplates_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategories_Icons" Association="gb_ts_stagingModel.FK_ProductCategories_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Icons" Association="gb_ts_stagingModel.FK_Products_Icons">
+            <End Role="tic_Icons" EntitySet="tic_Icons" />
+            <End Role="tic_Products" EntitySet="tic_Products" />
+          </AssociationSet>
+          <EntitySet Name="tic_TicketWorkflow" EntityType="gb_ts_stagingModel.tic_TicketWorkflow" />
+          <AssociationSet Name="FK_TicketWorkflow_Departments" Association="gb_ts_stagingModel.FK_TicketWorkflow_Departments">
+            <End Role="tic_Departments" EntitySet="tic_Departments" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_IssueTypes" Association="gb_ts_stagingModel.FK_TicketWorkflow_IssueTypes">
+            <End Role="tic_IssueTypes" EntitySet="tic_IssueTypes" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_ProductCategories" Association="gb_ts_stagingModel.FK_TicketWorkflow_ProductCategories">
+            <End Role="tic_ProductCategories" EntitySet="tic_ProductCategories" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_Products" Association="gb_ts_stagingModel.FK_TicketWorkflow_Products">
+            <End Role="tic_Products" EntitySet="tic_Products" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketWorkflow_TicketTypes" Association="gb_ts_stagingModel.FK_TicketWorkflow_TicketTypes">
+            <End Role="tic_TicketTypes" EntitySet="tic_TicketTypes" />
+            <End Role="tic_TicketWorkflow" EntitySet="tic_TicketWorkflow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomeFields_CustomFieldTypes" Association="gb_ts_stagingModel.FK_CustomeFields_CustomFieldTypes">
+            <End Role="tic_CustomFieldTypes" EntitySet="tic_CustomFieldTypes" />
+            <End Role="tic_CustomFields" EntitySet="tic_CustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormTemplateCustomeFields_FormTemplates" Association="gb_ts_stagingModel.FK_FormTemplateCustomeFields_FormTemplates">
+            <End Role="tic_FormTemplates" EntitySet="tic_FormTemplates" />
+            <End Role="tic_FormTemplateCustomFields" EntitySet="tic_FormTemplateCustomFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketsLogs_Tickets" Association="gb_ts_stagingModel.FK_TicketsLogs_Tickets">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="TicketsLog" EntitySet="TicketsLogs" />
+          </AssociationSet>
+          <EntitySet Name="CustomerContacts" EntityType="gb_ts_stagingModel.CustomerContact" />
+          <EntitySet Name="tic_TicketDefault" EntityType="gb_ts_stagingModel.tic_TicketDefault" />
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalIndex" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="PostalAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WebSite" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClassificationId" Type="Int32" Nullable="false" />
+          <Property Name="SubscriptionStartDate" Type="DateTime" />
+          <Property Name="SubscriptionEndDate" Type="DateTime" />
+          <Property Name="IsDeposit" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <Property Name="PaymentPeriod" Type="Int32" Nullable="false" />
+          <Property Name="BookieId" Type="Int32" />
+          <Property Name="PaidTillDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tic_DepartmentRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_UserDepartments" Relationship="gb_ts_stagingModel.FK_UserDepartments_DepartmentRoles" FromRole="tic_DepartmentRoles" ToRole="tic_UserDepartments" />
+        </EntityType>
+        <EntityType Name="tic_Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CanSeeCustomerDetails" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tickets" Relationship="gb_ts_stagingModel.FK_Tickets_Department" FromRole="tic_Departments" ToRole="Ticket" />
+          <NavigationProperty Name="tic_UserDepartments" Relationship="gb_ts_stagingModel.FK_UserDepartments_Departments" FromRole="tic_Departments" ToRole="tic_UserDepartments" />
+          <NavigationProperty Name="tic_TicketWorkflow" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_Departments" FromRole="tic_Departments" ToRole="tic_TicketWorkflow" />
+        </EntityType>
+        <EntityType Name="tic_EmailActions">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tic_EmailSendTo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SendTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_EmailTemplateSendTo" Relationship="gb_ts_stagingModel.FK_EmailTemplatesSendTo_EmailSendTo" FromRole="tic_EmailSendTo" ToRole="tic_EmailTemplateSendTo" />
+        </EntityType>
+        <EntityType Name="tic_EmailTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplate" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="EmailActionKey" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSubject" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_EmailTemplateSendTo" Relationship="gb_ts_stagingModel.FK_EmailTemplateSendTo_EmailTemplate" FromRole="tic_EmailTemplate" ToRole="tic_EmailTemplateSendTo" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmailTemplatePreview" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tic_EmailTemplateSendTo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailSendToId" Type="Int32" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_EmailSendTo" Relationship="gb_ts_stagingModel.FK_EmailTemplatesSendTo_EmailSendTo" FromRole="tic_EmailTemplateSendTo" ToRole="tic_EmailSendTo" />
+          <NavigationProperty Name="tic_EmailTemplate" Relationship="gb_ts_stagingModel.FK_EmailTemplateSendTo_EmailTemplate" FromRole="tic_EmailTemplateSendTo" ToRole="tic_EmailTemplate" />
+        </EntityType>
+        <EntityType Name="tic_Icons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Icon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_IssueTypes" Relationship="gb_ts_stagingModel.FK_IssueTypes_Icons" FromRole="tic_Icons" ToRole="tic_IssueTypes" />
+          <NavigationProperty Name="tic_TicketTypes" Relationship="gb_ts_stagingModel.FK_TicketTypes_Icons" FromRole="tic_Icons" ToRole="tic_TicketTypes" />
+          <NavigationProperty Name="tic_ProductCategories" Relationship="gb_ts_stagingModel.FK_ProductCategories_Icons" FromRole="tic_Icons" ToRole="tic_ProductCategories" />
+          <NavigationProperty Name="tic_Products" Relationship="gb_ts_stagingModel.FK_Products_Icons" FromRole="tic_Icons" ToRole="tic_Products" />
+        </EntityType>
+        <EntityType Name="tic_IssueTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_Icons" Relationship="gb_ts_stagingModel.FK_IssueTypes_Icons" FromRole="tic_IssueTypes" ToRole="tic_Icons" />
+          <NavigationProperty Name="Tickets" Relationship="gb_ts_stagingModel.FK_Tickets_IssueTypes" FromRole="tic_IssueTypes" ToRole="Ticket" />
+          <NavigationProperty Name="tic_FormTemplates" Relationship="gb_ts_stagingModel.FK_FormTemplates_IssueTypes" FromRole="tic_IssueTypes" ToRole="tic_FormTemplates" />
+          <NavigationProperty Name="tic_TicketWorkflow" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_IssueTypes" FromRole="tic_IssueTypes" ToRole="tic_TicketWorkflow" />
+        </EntityType>
+        <EntityType Name="tic_TicketStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tickets" Relationship="gb_ts_stagingModel.FK_Tickets_TicketStatus" FromRole="tic_TicketStatuses" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="tic_TicketTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_Icons" Relationship="gb_ts_stagingModel.FK_TicketTypes_Icons" FromRole="tic_TicketTypes" ToRole="tic_Icons" />
+          <NavigationProperty Name="Tickets" Relationship="gb_ts_stagingModel.FK_Tickets_TicketTypes" FromRole="tic_TicketTypes" ToRole="Ticket" />
+          <NavigationProperty Name="tic_FormTemplates" Relationship="gb_ts_stagingModel.FK_FormTemplates_TicketTypes" FromRole="tic_TicketTypes" ToRole="tic_FormTemplates" />
+          <NavigationProperty Name="tic_TicketWorkflow" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_TicketTypes" FromRole="tic_TicketTypes" ToRole="tic_TicketWorkflow" />
+        </EntityType>
+        <EntityType Name="tic_UserDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentRoleId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_DepartmentRoles" Relationship="gb_ts_stagingModel.FK_UserDepartments_DepartmentRoles" FromRole="tic_UserDepartments" ToRole="tic_DepartmentRoles" />
+          <NavigationProperty Name="tic_Departments" Relationship="gb_ts_stagingModel.FK_UserDepartments_Departments" FromRole="tic_UserDepartments" ToRole="tic_Departments" />
+          <NavigationProperty Name="user" Relationship="gb_ts_stagingModel.FK_UserDepartments_Users" FromRole="tic_UserDepartments" ToRole="user" />
+        </EntityType>
+        <EntityType Name="TicketField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketId" Type="Int32" />
+          <Property Name="Field" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="CustomFieldId" Type="Int32" />
+          <Property Name="TextValue" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerUserId" Type="Int32" Nullable="false" />
+          <Property Name="PriorityId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="IssueTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="OwnerId" Type="Int32" />
+          <Property Name="PackageId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_Departments" Relationship="gb_ts_stagingModel.FK_Tickets_Department" FromRole="Ticket" ToRole="tic_Departments" />
+          <NavigationProperty Name="tic_IssueTypes" Relationship="gb_ts_stagingModel.FK_Tickets_IssueTypes" FromRole="Ticket" ToRole="tic_IssueTypes" />
+          <NavigationProperty Name="tic_TicketStatuses" Relationship="gb_ts_stagingModel.FK_Tickets_TicketStatus" FromRole="Ticket" ToRole="tic_TicketStatuses" />
+          <NavigationProperty Name="tic_TicketTypes" Relationship="gb_ts_stagingModel.FK_Tickets_TicketTypes" FromRole="Ticket" ToRole="tic_TicketTypes" />
+          <NavigationProperty Name="TicketsLogs" Relationship="gb_ts_stagingModel.FK_TicketsLogs_Tickets" FromRole="Ticket" ToRole="TicketsLog" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PrevAssignee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NewAssignee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrevStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NewStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TicketsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <Property Name="ActorId" Type="Int32" />
+          <Property Name="EntryTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EntryValue" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" />
+          <NavigationProperty Name="Ticket" Relationship="gb_ts_stagingModel.FK_TicketsLogs_Tickets" FromRole="TicketsLog" ToRole="Ticket" />
+          <Property Name="EntryExtendedValue" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="ActorUserId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_UserDepartments_DepartmentRoles">
+          <End Type="gb_ts_stagingModel.tic_DepartmentRoles" Role="tic_DepartmentRoles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_UserDepartments" Role="tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_DepartmentRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="DepartmentRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Department">
+          <End Type="gb_ts_stagingModel.tic_Departments" Role="tic_Departments" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDepartments_Departments">
+          <End Type="gb_ts_stagingModel.tic_Departments" Role="tic_Departments" Multiplicity="0..1" />
+          <End Type="gb_ts_stagingModel.tic_UserDepartments" Role="tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplatesSendTo_EmailSendTo">
+          <End Type="gb_ts_stagingModel.tic_EmailSendTo" Role="tic_EmailSendTo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_EmailTemplateSendTo" Role="tic_EmailTemplateSendTo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_EmailSendTo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_EmailTemplateSendTo">
+              <PropertyRef Name="EmailSendToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplateSendTo_EmailTemplate">
+          <End Type="gb_ts_stagingModel.tic_EmailTemplate" Role="tic_EmailTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_EmailTemplateSendTo" Role="tic_EmailTemplateSendTo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_EmailTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_EmailTemplateSendTo">
+              <PropertyRef Name="EmailTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IssueTypes_Icons">
+          <End Type="gb_ts_stagingModel.tic_Icons" Role="tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_IssueTypes" Role="tic_IssueTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_IssueTypes">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketTypes_Icons">
+          <End Type="gb_ts_stagingModel.tic_Icons" Role="tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketTypes" Role="tic_TicketTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketTypes">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_IssueTypes">
+          <End Type="gb_ts_stagingModel.tic_IssueTypes" Role="tic_IssueTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_TicketStatus">
+          <End Type="gb_ts_stagingModel.tic_TicketStatuses" Role="tic_TicketStatuses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_TicketTypes">
+          <End Type="gb_ts_stagingModel.tic_TicketTypes" Role="tic_TicketTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDepartments_Users">
+          <End Type="gb_ts_stagingModel.user" Role="user" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_UserDepartments" Role="tic_UserDepartments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_UserDepartments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tic_CustomFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceholderText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomeFieldTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DbTableName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DbTableIdFieldName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DbTableTextFieldName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DbFilterFieldName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StepNumber" Type="Int32" />
+          <Property Name="RootCustomFieldId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_FormTemplateCustomFields" Relationship="gb_ts_stagingModel.FK_FormTemplateCustomFields_CustomFields" FromRole="tic_CustomFields" ToRole="tic_FormTemplateCustomFields" />
+          <NavigationProperty Name="tic_CustomFieldTypes" Relationship="gb_ts_stagingModel.FK_CustomeFields_CustomFieldTypes" FromRole="tic_CustomFields" ToRole="tic_CustomFieldTypes" />
+          <Property Name="DropdownCustomFieldId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tic_CustomFieldTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_CustomFields" Relationship="gb_ts_stagingModel.FK_CustomeFields_CustomFieldTypes" FromRole="tic_CustomFieldTypes" ToRole="tic_CustomFields" />
+        </EntityType>
+        <EntityType Name="tic_Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tic_FormTemplateCustomFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomFieldId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_CustomFields" Relationship="gb_ts_stagingModel.FK_FormTemplateCustomFields_CustomFields" FromRole="tic_FormTemplateCustomFields" ToRole="tic_CustomFields" />
+          <Property Name="FormTemplateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tic_FormTemplates" Relationship="gb_ts_stagingModel.FK_FormTemplateCustomeFields_FormTemplates" FromRole="tic_FormTemplateCustomFields" ToRole="tic_FormTemplates" />
+        </EntityType>
+        <EntityType Name="tic_FormTemplates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TicketTypeId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductCategoryId" Type="Int32" />
+          <Property Name="IssueTypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_IssueTypes" Relationship="gb_ts_stagingModel.FK_FormTemplates_IssueTypes" FromRole="tic_FormTemplates" ToRole="tic_IssueTypes" />
+          <NavigationProperty Name="tic_ProductCategories" Relationship="gb_ts_stagingModel.FK_FormTemplates_ProductCategories" FromRole="tic_FormTemplates" ToRole="tic_ProductCategories" />
+          <NavigationProperty Name="tic_Products" Relationship="gb_ts_stagingModel.FK_FormTemplates_Products" FromRole="tic_FormTemplates" ToRole="tic_Products" />
+          <NavigationProperty Name="tic_TicketTypes" Relationship="gb_ts_stagingModel.FK_FormTemplates_TicketTypes" FromRole="tic_FormTemplates" ToRole="tic_TicketTypes" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tic_FormTemplateCustomFields" Relationship="gb_ts_stagingModel.FK_FormTemplateCustomeFields_FormTemplates" FromRole="tic_FormTemplates" ToRole="tic_FormTemplateCustomFields" />
+        </EntityType>
+        <EntityType Name="tic_ProductCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_FormTemplates" Relationship="gb_ts_stagingModel.FK_FormTemplates_ProductCategories" FromRole="tic_ProductCategories" ToRole="tic_FormTemplates" />
+          <NavigationProperty Name="tic_Icons" Relationship="gb_ts_stagingModel.FK_ProductCategories_Icons" FromRole="tic_ProductCategories" ToRole="tic_Icons" />
+          <NavigationProperty Name="tic_TicketWorkflow" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_ProductCategories" FromRole="tic_ProductCategories" ToRole="tic_TicketWorkflow" />
+        </EntityType>
+        <EntityType Name="tic_Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IconId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_FormTemplates" Relationship="gb_ts_stagingModel.FK_FormTemplates_Products" FromRole="tic_Products" ToRole="tic_FormTemplates" />
+          <NavigationProperty Name="tic_Icons" Relationship="gb_ts_stagingModel.FK_Products_Icons" FromRole="tic_Products" ToRole="tic_Icons" />
+          <NavigationProperty Name="tic_TicketWorkflow" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_Products" FromRole="tic_Products" ToRole="tic_TicketWorkflow" />
+        </EntityType>
+        <Association Name="FK_FormTemplateCustomFields_CustomFields">
+          <End Type="gb_ts_stagingModel.tic_CustomFields" Role="tic_CustomFields" Multiplicity="1" />
+          <End Type="gb_ts_stagingModel.tic_FormTemplateCustomFields" Role="tic_FormTemplateCustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_CustomFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplateCustomFields">
+              <PropertyRef Name="CustomFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_IssueTypes">
+          <End Type="gb_ts_stagingModel.tic_IssueTypes" Role="tic_IssueTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_FormTemplates" Role="tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_ProductCategories">
+          <End Type="gb_ts_stagingModel.tic_ProductCategories" Role="tic_ProductCategories" Multiplicity="0..1" />
+          <End Type="gb_ts_stagingModel.tic_FormTemplates" Role="tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_ProductCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_Products">
+          <End Type="gb_ts_stagingModel.tic_Products" Role="tic_Products" Multiplicity="0..1" />
+          <End Type="gb_ts_stagingModel.tic_FormTemplates" Role="tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplates_TicketTypes">
+          <End Type="gb_ts_stagingModel.tic_TicketTypes" Role="tic_TicketTypes" Multiplicity="0..1" />
+          <End Type="gb_ts_stagingModel.tic_FormTemplates" Role="tic_FormTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplates">
+              <PropertyRef Name="TicketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategories_Icons">
+          <End Type="gb_ts_stagingModel.tic_Icons" Role="tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_ProductCategories" Role="tic_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_ProductCategories">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Icons">
+          <End Type="gb_ts_stagingModel.tic_Icons" Role="tic_Icons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_Products" Role="tic_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Icons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_Products">
+              <PropertyRef Name="IconId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tic_TicketWorkflow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerPriorityId" Type="Int32" />
+          <Property Name="TicketTypeId" Type="Int32" />
+          <Property Name="IssueTypeId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductCategoryId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tic_Departments" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_Departments" FromRole="tic_TicketWorkflow" ToRole="tic_Departments" />
+          <NavigationProperty Name="tic_IssueTypes" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_IssueTypes" FromRole="tic_TicketWorkflow" ToRole="tic_IssueTypes" />
+          <NavigationProperty Name="tic_ProductCategories" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_ProductCategories" FromRole="tic_TicketWorkflow" ToRole="tic_ProductCategories" />
+          <NavigationProperty Name="tic_Products" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_Products" FromRole="tic_TicketWorkflow" ToRole="tic_Products" />
+          <NavigationProperty Name="tic_TicketTypes" Relationship="gb_ts_stagingModel.FK_TicketWorkflow_TicketTypes" FromRole="tic_TicketWorkflow" ToRole="tic_TicketTypes" />
+        </EntityType>
+        <Association Name="FK_TicketWorkflow_Departments">
+          <End Type="gb_ts_stagingModel.tic_Departments" Role="tic_Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketWorkflow" Role="tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_IssueTypes">
+          <End Type="gb_ts_stagingModel.tic_IssueTypes" Role="tic_IssueTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketWorkflow" Role="tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_IssueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="IssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_ProductCategories">
+          <End Type="gb_ts_stagingModel.tic_ProductCategories" Role="tic_ProductCategories" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketWorkflow" Role="tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_ProductCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_Products">
+          <End Type="gb_ts_stagingModel.tic_Products" Role="tic_Products" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketWorkflow" Role="tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketWorkflow_TicketTypes">
+          <End Type="gb_ts_stagingModel.tic_TicketTypes" Role="tic_TicketTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_TicketWorkflow" Role="tic_TicketWorkflow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_TicketTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_TicketWorkflow">
+              <PropertyRef Name="TicketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomeFields_CustomFieldTypes">
+          <End Type="gb_ts_stagingModel.tic_CustomFieldTypes" Role="tic_CustomFieldTypes" Multiplicity="1" />
+          <End Type="gb_ts_stagingModel.tic_CustomFields" Role="tic_CustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_CustomFieldTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_CustomFields">
+              <PropertyRef Name="CustomeFieldTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormTemplateCustomeFields_FormTemplates">
+          <End Type="gb_ts_stagingModel.tic_FormTemplates" Role="tic_FormTemplates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_ts_stagingModel.tic_FormTemplateCustomFields" Role="tic_FormTemplateCustomFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tic_FormTemplates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tic_FormTemplateCustomFields">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketsLogs_Tickets">
+          <End Type="gb_ts_stagingModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="gb_ts_stagingModel.TicketsLog" Role="TicketsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TicketsLog">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CustomerContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Skype" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phones" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tic_TicketDefault">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="IssueTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="PackageId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gb_ts_stagingModelStoreContainer" CdmEntityContainer="gb_ts_stagingEntities">
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userclaims">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.userclaim">
+              <MappingFragment StoreEntitySet="userclaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userlogins">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.userlogin">
+              <MappingFragment StoreEntitySet="userlogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="userroles" TypeName="gb_ts_stagingModel.userroles" StoreEntitySet="userroles">
+            <EndProperty Name="users">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="roles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="PaidTillDate" ColumnName="PaidTillDate" />
+                <ScalarProperty Name="BookieId" ColumnName="BookieId" />
+                <ScalarProperty Name="PaymentPeriod" ColumnName="PaymentPeriod" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsDeposit" ColumnName="IsDeposit" />
+                <ScalarProperty Name="SubscriptionEndDate" ColumnName="SubscriptionEndDate" />
+                <ScalarProperty Name="SubscriptionStartDate" ColumnName="SubscriptionStartDate" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Phones" ColumnName="Phones" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="PostalAddress" ColumnName="PostalAddress" />
+                <ScalarProperty Name="PostalIndex" ColumnName="PostalIndex" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_DepartmentRoles">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_DepartmentRoles">
+              <MappingFragment StoreEntitySet="tic_DepartmentRoles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_Departments">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_Departments">
+              <MappingFragment StoreEntitySet="tic_Departments">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CanSeeCustomerDetails" ColumnName="CanSeeCustomerDetails" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_EmailActions">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_EmailActions">
+              <MappingFragment StoreEntitySet="tic_EmailActions">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_EmailSendTo">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_EmailSendTo">
+              <MappingFragment StoreEntitySet="tic_EmailSendTo">
+                <ScalarProperty Name="SendTo" ColumnName="SendTo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_EmailTemplate">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_EmailTemplate">
+              <MappingFragment StoreEntitySet="tic_EmailTemplate">
+                <ScalarProperty Name="EmailTemplatePreview" ColumnName="EmailTemplatePreview" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="EmailActionKey" ColumnName="EmailActionKey" />
+                <ScalarProperty Name="EmailTemplate" ColumnName="EmailTemplate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_EmailTemplateSendTo">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_EmailTemplateSendTo">
+              <MappingFragment StoreEntitySet="tic_EmailTemplateSendTo">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+                <ScalarProperty Name="EmailSendToId" ColumnName="EmailSendToId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_Icons">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_Icons">
+              <MappingFragment StoreEntitySet="tic_Icons">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_IssueTypes">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_IssueTypes">
+              <MappingFragment StoreEntitySet="tic_IssueTypes">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_TicketStatuses">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_TicketStatuses">
+              <MappingFragment StoreEntitySet="tic_TicketStatuses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_TicketTypes">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_TicketTypes">
+              <MappingFragment StoreEntitySet="tic_TicketTypes">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_UserDepartments">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_UserDepartments">
+              <MappingFragment StoreEntitySet="tic_UserDepartments">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DepartmentRoleId" ColumnName="DepartmentRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketFields">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.TicketField">
+              <MappingFragment StoreEntitySet="TicketFields">
+                <ScalarProperty Name="TextValue" ColumnName="TextValue" />
+                <ScalarProperty Name="CustomFieldId" ColumnName="CustomFieldId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="NewStatus" ColumnName="NewStatus" />
+                <ScalarProperty Name="PrevStatus" ColumnName="PrevStatus" />
+                <ScalarProperty Name="NewAssignee" ColumnName="NewAssignee" />
+                <ScalarProperty Name="PrevAssignee" ColumnName="PrevAssignee" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="CustomerUserId" ColumnName="CustomerUserId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketsLogs">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.TicketsLog">
+              <MappingFragment StoreEntitySet="TicketsLogs">
+                <ScalarProperty Name="ActorUserId" ColumnName="ActorUserId" />
+                <ScalarProperty Name="EntryExtendedValue" ColumnName="EntryExtendedValue" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="EntryValue" ColumnName="EntryValue" />
+                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
+                <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_CustomFields">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_CustomFields">
+              <MappingFragment StoreEntitySet="tic_CustomFields">
+                <ScalarProperty Name="DropdownCustomFieldId" ColumnName="DropdownCustomFieldId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RootCustomFieldId" ColumnName="RootCustomFieldId" />
+                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+                <ScalarProperty Name="DbFilterFieldName" ColumnName="DbFilterFieldName" />
+                <ScalarProperty Name="DbTableTextFieldName" ColumnName="DbTableTextFieldName" />
+                <ScalarProperty Name="DbTableIdFieldName" ColumnName="DbTableIdFieldName" />
+                <ScalarProperty Name="DbTableName" ColumnName="DbTableName" />
+                <ScalarProperty Name="CustomeFieldTypeId" ColumnName="CustomeFieldTypeId" />
+                <ScalarProperty Name="PlaceholderText" ColumnName="PlaceholderText" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_CustomFieldTypes">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_CustomFieldTypes">
+              <MappingFragment StoreEntitySet="tic_CustomFieldTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_Files">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_Files">
+              <MappingFragment StoreEntitySet="tic_Files">
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_FormTemplateCustomFields">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_FormTemplateCustomFields">
+              <MappingFragment StoreEntitySet="tic_FormTemplateCustomFields">
+                <ScalarProperty Name="FormTemplateId" ColumnName="FormTemplateId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="CustomFieldId" ColumnName="CustomFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_FormTemplates">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_FormTemplates">
+              <MappingFragment StoreEntitySet="tic_FormTemplates">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TicketTypeId" ColumnName="TicketTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_ProductCategories">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_ProductCategories">
+              <MappingFragment StoreEntitySet="tic_ProductCategories">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_Products">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_Products">
+              <MappingFragment StoreEntitySet="tic_Products">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IconId" ColumnName="IconId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_TicketWorkflow">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_TicketWorkflow">
+              <MappingFragment StoreEntitySet="tic_TicketWorkflow">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+                <ScalarProperty Name="TicketTypeId" ColumnName="TicketTypeId" />
+                <ScalarProperty Name="CustomerPriorityId" ColumnName="CustomerPriorityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerContacts">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.CustomerContact">
+              <MappingFragment StoreEntitySet="CustomerContacts">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Phones" ColumnName="Phones" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tic_TicketDefault">
+            <EntityTypeMapping TypeName="gb_ts_stagingModel.tic_TicketDefault">
+              <MappingFragment StoreEntitySet="tic_TicketDefault">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

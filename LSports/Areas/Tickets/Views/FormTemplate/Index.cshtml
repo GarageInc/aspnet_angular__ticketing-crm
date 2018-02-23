@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Form Templates";
+    ViewBag.App = "formTemplatesApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/FormTemplates/app.js"></script>
+
+    <script src="~/Scripts/FormTemplates/formTemplatesService.js"></script>
+    <script src="~/Scripts/FormTemplates/formTemplatesController.js"></script>
+    <script src="~/Scripts/FormTemplates/formTemplatesDirective.js"></script>
+}
+
+@section Body
+{
+    <div form-templates-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+
+
+

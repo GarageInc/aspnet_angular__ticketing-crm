@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Ticket Types";
+    ViewBag.App = "ticketTypeApp";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/TicketTypes/app.js"></script>
+
+    <script src="~/Scripts/TicketTypes/ticketTypeController.js"></script>
+    <script src="~/Scripts/TicketTypes/ticketTypeDirective.js"></script>
+}
+
+@section Body
+{
+    <div ticket-type-directive>
+        @Html.Partial("Central")
+    </div>
+}

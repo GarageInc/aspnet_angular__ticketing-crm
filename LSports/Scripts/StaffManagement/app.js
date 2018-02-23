@@ -1,0 +1,1 @@
+﻿var staffManagementApp = angular.module("staffManagementApp", ["dashboard", "dropdown-datasource", "network-services"]);

@@ -1,0 +1,123 @@
+﻿
+        .aha-invalid {
+            border: 1px solid red;
+        }
+        #user_role_table{
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; 
+  word-wrap:break-word; 
+}
+        .clickable {
+            cursor: pointer;
+            outline: 0;
+        }
+    
+.date.input-medium {
+    width: inherit !important;
+    padding-right: 15px;
+}
+
+.aha-sub-menu > li > a {
+    color: #bdbdbd;
+    display: block;
+    margin: 0;
+    padding: 6px 15px 6px 43px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    background: none;
+}
+
+.aha-sub-menu > li {
+    background: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 1px !important;
+}
+
+.aha-sub-menu {
+    padding: 0;
+    margin: 8px 0px 8px 0px;   
+}
+
+
+.block-spinner-bar {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+
+@-webkit-keyframes bounceDelay {
+    0%,100%,80% {
+        -webkit-transform: scale(0)
+    }
+
+    40% {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes bounceDelay {
+    0%,100%,80% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    40% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+}
+
+.block-spinner-bar > div {
+    background:#4bccd8;
+
+    margin: 0 2px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    -webkit-animation: bounceDelay 1.4s infinite ease-in-out;
+    animation: bounceDelay 1.4s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    border-radius:100% !important
+}
+
+.block-spinner-bar .bounce1 {
+    animation-delay: -0.32s;
+}
+
+.block-spinner-bar .bounce2 {
+    animation-delay: -0.16s;
+}
+
+.loading-message,.page-loading {
+    min-width: 125px;
+    vertical-align: middle
+}
+
+
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting {
+  cursor: pointer;
+  *cursor: hand;
+}
+table.dataTable thead .sorting {
+  background: url("metronic/assets/global/plugins/datatables/media/images/sort_both.png") no-repeat center right;
+}
+table.dataTable thead .sorting_asc {
+  background: url("metronic/assets/global/plugins/datatables/media/images/sort_asc.png") no-repeat center right;
+}
+table.dataTable thead .sorting_desc {
+  background: url("metronic/assets/global/plugins/datatables/media/images/sort_desc.png") no-repeat center right;
+}
+table.dataTable thead .sorting_asc_disabled {
+  background: url("metronic/assets/global/plugins/datatables/media/images/sort_asc_disabled.png") no-repeat center right;
+}
+table.dataTable thead .sorting_desc_disabled {
+  background: url("metronic/assets/global/plugins/datatables/media/images/sort_desc_disabled.png") no-repeat center right;
+}

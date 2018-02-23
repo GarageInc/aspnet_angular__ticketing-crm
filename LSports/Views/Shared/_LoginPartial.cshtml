@@ -1,0 +1,26 @@
+﻿@using LSports.Framework.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("", "", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right", action= "/Account/LogOff" }))
+    {
+        @Html.AntiForgeryToken()
+
+        var user = ViewBag.CurrentUser as ApplicationUser;
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink($"Hello {HttpContext.Current.User.Identity.Name}!", "Index", "IssueType", routeValues: null, htmlAttributes: new { title = "Manage", @class = "navbar-dashboard" })
+            </li>
+            <li class="dropdown dropdown-quick-sidebar-toggler">
+                <a href="javascript:window.name='';document.getElementById('logoutForm').submit();" class="dropdown-toggle">
+                    <i class="icon-logout"></i>
+                </a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

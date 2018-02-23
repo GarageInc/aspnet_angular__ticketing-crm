@@ -1,0 +1,1 @@
+﻿var ticketTypeApp = angular.module("ticketTypeApp", ["dashboard","dropdown-datasource", "network-services"]);

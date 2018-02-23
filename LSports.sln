@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.Web", "LSports\LSports.Web.csproj", "{3A397A05-632F-464B-86BC-B97DB5F3E138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.Tests", "LSports.Tests\LSports.Tests.csproj", "{B3C726C6-B91F-45DD-A41B-0D7DE49DB14C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.MySQL", "AspNet.Identity.MySQL\AspNet.Identity.MySQL.csproj", "{26F6ECF9-4369-417B-8CF2-54FA92DF3660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.Framework.DataAccess", "LSports.Framework.DataAccess\LSports.Framework.DataAccess.csproj", "{A69E9F5F-E80E-464D-9F71-C0A2E856B633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.Framework.Models", "LSports.Framework.Models\LSports.Framework.Models.csproj", "{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.Services", "LSports.Services\LSports.Services.csproj", "{94205436-4AE3-49CB-864C-1E419081D78D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSports.ViewModels", "LSports.ViewModels\LSports.ViewModels.csproj", "{69A0BECC-880B-4F86-9BF4-BEE1C8081F4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A397A05-632F-464B-86BC-B97DB5F3E138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A397A05-632F-464B-86BC-B97DB5F3E138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A397A05-632F-464B-86BC-B97DB5F3E138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A397A05-632F-464B-86BC-B97DB5F3E138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C726C6-B91F-45DD-A41B-0D7DE49DB14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C726C6-B91F-45DD-A41B-0D7DE49DB14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C726C6-B91F-45DD-A41B-0D7DE49DB14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C726C6-B91F-45DD-A41B-0D7DE49DB14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69E9F5F-E80E-464D-9F71-C0A2E856B633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69E9F5F-E80E-464D-9F71-C0A2E856B633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69E9F5F-E80E-464D-9F71-C0A2E856B633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69E9F5F-E80E-464D-9F71-C0A2E856B633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B989F3-B11E-4DF1-B973-DD40F1B8DBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94205436-4AE3-49CB-864C-1E419081D78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94205436-4AE3-49CB-864C-1E419081D78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94205436-4AE3-49CB-864C-1E419081D78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94205436-4AE3-49CB-864C-1E419081D78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A0BECC-880B-4F86-9BF4-BEE1C8081F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A0BECC-880B-4F86-9BF4-BEE1C8081F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A0BECC-880B-4F86-9BF4-BEE1C8081F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A0BECC-880B-4F86-9BF4-BEE1C8081F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

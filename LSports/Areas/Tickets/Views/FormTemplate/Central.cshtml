@@ -1,0 +1,276 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <span class="caption-subject bold uppercase">Form Templates</span>
+                </div>
+                <div class="tools">
+                    <a class="btn blue" style="height: auto;" ng-click="ctrl.addNewFormTemplate();">Add new</a>
+                </div>
+            </div>
+            <style>
+                .dataTables_filter {
+                    text-align: right;
+                }
+            </style>
+            <div class="note note-info">
+                <p> You can drag & drop to reorder the rules. The top rules have higher priority. The first matching form is applied to a ticket. </p>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover dataTable dtr-inline" id="sample_1" role="grid" aria-describedby="sample_1_info" >
+                    <thead>
+                        <tr role="row">
+                            <th>sortingOrder</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Ticket Type</th>
+                            <th>Product</th>
+                            <th>Product Category</th>
+                            <th>Issue Type</th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody style="cursor:move"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        .bug-option:before {
+            content: "";
+        }
+    </style>
+    <div class="modal fade" id="edit-department">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ctrl.closeModal()" aria-hidden="true"></button>
+                    <h4 class="modal-title">Form Template</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs">
+                            <li class="active" id="edit-tab-li" aria-expanded="true"><a href="#edit_tab" data-toggle="tab" ng-click="ctrl.showFormEditor()">Edit</a></li>
+                            <li id="preview-tab-li"><a href="#preview_tab" data-toggle="tab" ng-click="ctrl.showFormPreview()">Preview</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="edit_tab">
+                                <form class="form-horizontal" name="formTemplateForm">
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="form-name">Name</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="form-name"
+                                                   ng-model="ctrl.sharedData.formName"
+                                                   name="templateName"
+                                                   required
+                                                   ng-class="{'aha-invalid' : formTemplateForm.templateName.$invalid && formTemplateForm.templateName.$touched}"
+                                                  >
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-outline blue col-lg-12" ng-click="ctrl.deleteFormTemplate()" ng-show="ctrl.sharedData.editingFormId > 0">DELETE</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="table-name">Ticket Type</label>
+                                        <div class="col-md-6">
+                                            <select id="table-name" class="form-control"
+                                                    ng-model="ctrl.sharedData.selectedTicketType"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.ticketTypes track by item.Id"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Product</label>
+                                        <div class="col-md-6">
+                                            <select id="table-name" class="form-control"
+                                                    ng-model="ctrl.sharedData.selectedProductName"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.productNames track by item.Id"
+                                                    ng-change="ctrl.tableNameSelectionChanged()"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Product Category</label>
+                                        <div class="col-md-6">
+                                            <select id="table-name" class="form-control"
+                                                    ng-model="ctrl.sharedData.selectedProductCategory"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.productCategories track by item.Id"
+                                                    ng-change="ctrl.tableNameSelectionChanged()"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Issue Type</label>
+                                        <div class="col-md-6">
+                                            <select id="table-name" class="form-control"
+                                                    ng-model="ctrl.sharedData.selectedIssueType"
+                                                    ng-options="item as item.Name for item in ctrl.sharedData.issueTypes track by item.Id"
+                                                    ng-change="ctrl.tableNameSelectionChanged()"></select>
+                                        </div>
+                                    </div>
+
+
+                                    <hr />
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="table-name">Fields</label>
+                                        <div class="col-md-8" id="form-fields-list" ui-sortable="sortableOptions" ng-model="ctrl.sharedData.formFields">
+                                            <div class="row" style="margin-bottom: 10px"
+                                                 ng-repeat="formField in ctrl.sharedData.formFields track by $index"
+                                                 id="{{'form-elem'+$index}}"
+                                                 sv-element>
+
+                                                <div class="col-md-1 control-label" style="cursor: move; color: grey; padding-right:0px"><div class="fa fa-ellipsis-v" style="padding-right:1px"></div><div class="fa fa-ellipsis-v"></div> </div>
+                                                <div class="col-md-10">
+                                                    <select class="form-control"
+                                                            ng-model="formField.selectedCustomField"
+                                                            ng-options="item as item.Name for item in ctrl.sharedData.customFields track by item.Id"
+                                                            required
+                                                            name="{{'formElem'+$index}}"
+                                                            ng-class="{'aha-invalid' : formTemplateForm.{{'formElem'+$index}}.$viewValue.Id === '0' && formTemplateForm.{{'formElem'+$index}}.$touched}"
+                                                            ></select>
+                                                </div>
+                                                <div class="col-md-1 control-label">
+                                                    <span class="icon-close" style="font-size: 24px; cursor: pointer; outline: none;"
+                                                          ng-click="ctrl.removeFormField($index)"
+                                                          ng-show="ctrl.sharedData.formFields.length !== 1"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <div style="text-align: right">
+                                                    <a class="clickable" ng-click="ctrl.addFormField()">
+                                                        + add new
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="preview_tab">
+                                <div class="form-horizontal">
+                                    <div ng-repeat="renderedField in ctrl.sharedData.renderedFormFields track by $index">
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Text">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9 ">
+                                                <input class="form-control" type="text" placeholder="{{renderedField.selectedCustomField.PlaceholderText}}" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.LongText">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9 ">
+                                                <textarea class="form-control" rows="3" placeholder={{renderedField.selectedCustomField.PlaceholderText}}></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Checkbox">
+                                            <label class="col-md-3 control-label">
+                                                {{renderedField.selectedCustomField.Title}}
+                                            </label>
+                                            <div class="col-md-9 ">
+                                                <input type="checkbox">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Email">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" type="email" placeholder="{{renderedField.selectedCustomField.PlaceholderText}}" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Numeric">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control bfh-number" type="number" placeholder="{{renderedField.selectedCustomField.PlaceholderText}}" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.MultipleSelection">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9">
+                                                <select multiple="multiple"
+                                                        id="{{ctrl.multiselectDropdownIds[renderedField.selectedCustomField.Name]}}"
+                                                        ng-model="ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].dummyModel"
+                                                        ng-options="item as item.Name for item in ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].data track by item.Id"
+                                                        class="form-control"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Dropdown">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9">
+                                                <select ng-model="ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].dummyModel"
+                                                        ng-options="item as item.Name for item in ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].data track by item.Id"
+                                                        class="form-control"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Attachments">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" type="file" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group" ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.Date">
+                                            <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                            <div class="col-md-9 input-group input-medium date date-picker" style="padding-left:15px" data-date-format="dd-mm-yyyy">
+                                                <input type="text" class="form-control" readonly="">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div ng-if="renderedField.selectedCustomField.CustomFieldType.Id === ctrl.fieldTypesEnum.RelatedDropdowns" style="margin-top: 10px; margin-bottom: 10px;">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                                <div class="col-md-9">
+                                                    <select ng-model="ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].dummyModel"
+                                                            ng-options="item as item.Name for item in ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].data track by item.Id"
+                                                            ng-change="ctrl.relatedDropdownSelectionChanged(0, renderedField.selectedCustomField.Name)"
+                                                            class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" ng-repeat="relatedDropdown in ctrl.sharedData.dropdownsForForm[renderedField.selectedCustomField.Name].relatedDropdowns track by $index">
+                                                <label class="col-md-3 control-label">{{renderedField.selectedCustomField.Title}}</label>
+                                                <div class="col-md-9">
+                                                    <select ng-model="relatedDropdown.selectedOption"
+                                                            ng-options="item as item.Name for item in relatedDropdown.options track by item.Id"
+                                                            ng-change="ctrl.relatedDropdownSelectionChanged($index, renderedField.selectedCustomField.Name)"
+                                                            class="form-control"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="ctrl.closeModal()" class="btn dark btn-outline">Close</button>
+                    <button type="button" class="btn blue" ng-click="ctrl.saveChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

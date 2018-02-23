@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Tickets";
+    ViewBag.App = "ticketsApp";
+}
+
+@section Scripts
+{
+    <link href="../../Content/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+    <link href="../../Content/jquery.fileupload.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/bootstrap-modal.js"></script>
+
+    <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+    <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-process.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-audio.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-image.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-validate.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-video.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="../../Scripts/_Shared/vendors/jquery.fileupload-angular.js"></script>
+
+
+
+    <script src="~/Scripts/_Shared/trix/trix.js"></script>
+    <script src="~/Scripts/_Shared/trix/angular-trix.js"></script>
+    <script src="~/Scripts/_Shared/hashmap/hashmap.js"></script>
+    <script src="~/Scripts/_Shared/NetworkServices/network-services.js"></script>
+    <script src="~/Scripts/_Shared/DropdownDatasource/dropdownDatasource.js"></script>
+    <script src="~/Scripts/Tickets/app.js"></script>
+
+    <script src="~/Scripts/Tickets/Shared/formManagementService.js"></script>
+
+    <script src="~/Scripts/Tickets/AhaFileAttachment/ahaFileAttachmentService.js"></script>
+    <script src="~/Scripts/Tickets/AhaFileAttachment/ahaFileAttachmentController.js"></script>
+    <script src="~/Scripts/Tickets/AhaFileAttachment/ahaFileAttachmentDirective.js"></script>
+    
+
+    <script src="~/Scripts/Tickets/CreateTicketWizard/createTicketWizardController.js"></script>
+    <script src="~/Scripts/Tickets/CreateTicketWizard/createTicketWizardDirective.js"></script>
+    <script src="~/Scripts/Tickets/CreateTicketWizard/createTicketWizardService.js"></script>
+
+    <script src="~/Scripts/Tickets/ticketsService.js"></script>
+    <script src="~/Scripts/Tickets/ticketsController.js"></script>
+    <script src="~/Scripts/Tickets/ticketsDirective.js"></script>
+}
+
+@section Body
+{
+    <div tickets-directive>
+        @Html.Partial("Central")
+    </div>
+}
+
+
+
+
